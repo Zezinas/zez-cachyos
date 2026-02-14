@@ -1,0 +1,79 @@
+TOP BAR:
+
+BACKGROUND:
+Color:		#000000
+Opacity: 	18%
+Background blur effect 20
+
+Length: 	3360px
+Height: 	48px
+
+X: 0
+Y: 0
+
+TEXT:
+Font:		SF Pro text
+Weight:		Medium
+Size:		28px
+
+Length: 	Auto
+Height:		Auto
+Horizontal Align: 	Center
+Vertical Align: 	Center
+Y:       	+2px offset up
+
+TEXT RECTANGLE SELECT:
+Length:        +30px each side of text
+Height 		48px
+Corner radius	8
+
+Y: 		0
+
+Color:		#FFFFFF
+Opacity: 	10% (old 18%)
+
+
+
+Edge to edge gap between text 40px
+Margin from left to first text is 40px
+
+
+
+
+
+
+APPLE LOGO :
+Font:		SF Pro text
+Weight:		Medium
+Size:		40px
+
+Length: 	Auto
+Height:		Auto
+Horizontal Align: 	Center
+Vertical Align: 	Center
+
+Y: 		0
+
+
+
+
+
+
+Right side:
+
+Date and Time:
+"DDD MM d   HH:MM"
+
+Align right
+36px from right side of Date and Time box to right margin
+16px from right side of Date and Time selection to right margin
++20px on each side of the box is selection
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+  "spacing": -10,
+  "modules-left": [
+    "custom/apple",
+    "hyprland/window",
+    "custom/file",
+    "custom/edit",
+    "custom/view",
+    "custom/history",
+  ],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": [
+    "custom/c3",
+    "custom/network-icon",
+    "custom/control-center",
+    "clock",
+  ],
+  "custom/apple": {
+    "format": "",
+    "tooltip": false,
+    "menu": "on-click",
+    "menu-file": "~/.config/waybar/xml/apple_menu.xml",
+    "menu-actions": {
+      "shutdown": "shutdown",
+      "reboot": "reboot",
+      "suspend": "systemctl suspend",
+      "hibernate": "systemctl hibernate",
+    },
+  },
+  "custom/file": {
+    "format": "File",
+    "tooltip": false,
+  },
+  "custom/edit": {
+    "format": "Edit",
+    "tooltip": false,
+  },
+  "custom/view": {
+    "format": "View",
+    "tooltip": false,
+  },
+  "custom/history": {
+    "format": "History",
+    "tooltip": false,
+  },
+  "clock": {
+    "format": "{:%a %b %d %H:%M}",
+    "interval": 60,
+    "on-click": "alacritty",
+    "tooltip": false,
+  },
+  "custom/control-center": {
+    "format": "􀜊",
+    "tooltip": false,
+  },
+  "custom/network-icon": {
+    "exec": "~/.config/waybar/scripts/wifi-icon.sh",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "alacritty",
+    "tooltip": true,
+  },
+  "custom/c3": {
+    "format": "C3",
+    "tooltip": false,
+  },
+
+  "hyprland/window": {
+    "format": "{class}",
+    "format-empty": "Hyprland",
+    "max-length": 30,
+    "separate-outputs": true,
+    "tooltip": false,
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+
+    "sort-by": "id",
+
+    "persistent-workspaces": {
+      "*": 5,
+    },
+
+    "format-icons": {
+      "active": "●",
+      "default": "○",
+    },
+  },
+}
