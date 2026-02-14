@@ -1,14 +1,12 @@
-// ~/.config/ags/widgets/apple_menu/menuItems.js
-
-import { spawn } from "ags";
+import { execAsync } from "astal/utils";
 
 // Helper function to run shell commands
-const run = (cmd) => () => spawn(cmd.split(" "));
+const run = (cmd: string) => () => execAsync(cmd).catch(print);
 
 export const appleMenuItems = [
   {
     label: "About this Mac",
-    action: run("alacritty -e fastfetch"), // launches terminal + fastfetch
+    action: run("alacritty -e fastfetch"),
   },
   {
     label: "Updates",
@@ -16,12 +14,12 @@ export const appleMenuItems = [
   },
   {
     label: "Terminal",
-    action: run("alacritty"), // open default terminal
+    action: run("alacritty"),
   },
   { separator: true },
   {
     label: "Sleep",
-    action: run("systemctl suspend"), // could replace with hyprctl if needed
+    action: run("systemctl suspend"),
   },
   {
     label: "Restart...",
@@ -34,6 +32,6 @@ export const appleMenuItems = [
   { separator: true },
   {
     label: "Lockscreen",
-    action: run("loginctl lock-session"), // placeholder, update if you use swaylock, slock, etc.
+    action: run("loginctl lock-session"),
   },
 ];

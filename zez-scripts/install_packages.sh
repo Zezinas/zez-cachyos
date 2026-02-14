@@ -54,6 +54,7 @@ sudo pacman -S --noconfirm --needed "${OFFICIAL_UTILS[@]}"
 AUR_PACKAGES=(
     vicinae-bin                # Raycast-like launcher
     zen-browser                # Lightweight Chromium-based browser
+    quickshell                 # Custom shell for Hyprland
 )
 
 echo "Installing AUR packages via yay..."
