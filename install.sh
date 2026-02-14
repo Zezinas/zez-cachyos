@@ -6,6 +6,7 @@ BASE_URL="https://raw.githubusercontent.com/Zezinas/zez-cachyos/main/zez-scripts
 SCRIPTS=(
     "install_packages.sh"
     "setup_ssh.sh"
+    "setup_config.sh"
 )
 
 echo "=== Zez-CachyOS Installer (Direct) ==="
