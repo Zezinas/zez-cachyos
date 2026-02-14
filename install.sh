@@ -23,9 +23,9 @@ unzip -q "$TMP_DIR/repo.zip" -d "$TMP_DIR"
 REPO_EXTRACTED="$TMP_DIR/${REPO_NAME}-${BRANCH}"
 
 if [[ -d "$REPO_EXTRACTED/$CONFIG_PATH" ]]; then
-    echo "🗑️ Replacing existing ~/.config"
-    rm -rf "$HOME/.config"
-    cp -r "$REPO_EXTRACTED/$CONFIG_PATH" "$HOME/.config"
+    echo "📂 Merging .config into existing ~/.config"
+    mkdir -p "$HOME/.config"
+    cp -r "$REPO_EXTRACTED/$CONFIG_PATH/"* "$HOME/.config/"
 else
     echo "❌ .config folder not found in repo"
     exit 1
