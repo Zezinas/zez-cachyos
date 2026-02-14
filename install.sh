@@ -2,7 +2,7 @@
 # install.sh - Run multiple Zez-CachyOS scripts directly from GitHub
 
 # --- CONFIGURATION ---
-BASE_URL="https://raw.githubusercontent.com/Zezinas/zez-cachyos/zez-scripts/"
+BASE_URL="https://raw.githubusercontent.com/Zezinas/zez-cachyos/main/zez-scripts/"
 SCRIPTS=(
     "install_packages.sh"
     "setup_ssh.sh"
