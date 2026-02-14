@@ -8,7 +8,8 @@ TEMP_DIR="$(mktemp -d)"
 git clone --depth 1 "$REPO_URL" "$TEMP_DIR"
 
 # Copy the .config folder contents to ~/.config
-rsync -avh --progress "$TEMP_DIR/.config/" "$HOME/.config/"
+mkdir -p "$HOME/.config"
+cp -a "$TEMP_DIR/.config/." "$HOME/.config/"
 
 # Clean up
 rm -rf "$TEMP_DIR"
