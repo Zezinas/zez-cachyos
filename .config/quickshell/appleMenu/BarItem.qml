@@ -1,3 +1,4 @@
+// BarItem.qml
 import QtQuick
 import QtQuick.Controls
 import "."
@@ -8,6 +9,8 @@ Rectangle {
     property alias text: label.text
     property int fontSizeOverride: 0  // 0 = use Theme default
     property int fontWeightOverride: 0  // 0 = use Theme default
+
+    signal clicked()   // <-- new signal
 
     height: Theme.barHeight
     radius: Theme.radius
@@ -32,6 +35,9 @@ Rectangle {
         anchors.fill: parent
         hoverEnabled: true
 
-        onClicked: console.log(root.text + " clicked")
+        onClicked: {
+            root.clicked()                    // emit the signal
+            console.log(root.text + " clicked")  // debug log
+        }
     }
 }

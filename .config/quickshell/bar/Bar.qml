@@ -1,8 +1,11 @@
+// Bar.qml
 import Quickshell
 import QtQuick
 import "."
+import "modules"
 
 Scope {
+  signal toggleAppleMenu()   // <-- apple menu toggle signal
 
   Variants {
     model: Quickshell.screens
@@ -30,9 +33,9 @@ Scope {
           anchors.verticalCenter: parent.verticalCenter
           spacing: Theme.spacing
           anchors.leftMargin: Theme.edgeMargin
-          //anchors.leftMargin: 5
 
-          BarItem { text: ""; fontSizeOverride: 22 }
+          BarItem { text: ""; fontSizeOverride: 22; onClicked: toggleAppleMenu() }
+
           BarItem { text: "Alacritty"; fontWeightOverride: 700 }
           BarItem { text: "File" }
           BarItem { text: "Edit" }
@@ -40,19 +43,21 @@ Scope {
           BarItem { text: "History" }
         }
 
+        // CENTER
+
         // RIGHT
         Row {
           anchors.right: parent.right
           anchors.verticalCenter: parent.verticalCenter
           spacing: Theme.spacing
           anchors.rightMargin: Theme.edgeMargin
-          //anchors.rightMargin: 5
 
           BarItem { text: "􀴞" }
           BarItem { text: "􀜊" }
           BarItem { text: Time.time }
         }
       }
+
     }
   }
 }
