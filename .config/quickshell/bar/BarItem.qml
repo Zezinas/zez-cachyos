@@ -1,7 +1,7 @@
 // BarItem.qml
 import QtQuick
 import QtQuick.Controls
-import "."
+import ".."
 
 Rectangle {
     id: root

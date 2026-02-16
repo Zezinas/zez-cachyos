@@ -19,4 +19,6 @@ Scope {
         appleMenuLoader.active = !appleMenuLoader.active
     }
   }
+
+  AppleMenu {}
 }

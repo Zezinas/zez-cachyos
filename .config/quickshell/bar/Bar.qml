@@ -1,8 +1,9 @@
 // Bar.qml
 import Quickshell
 import QtQuick
-import "."
+import ".."
 import "modules"
+
 
 Scope {
   signal toggleAppleMenu()   // <-- apple menu toggle signal
