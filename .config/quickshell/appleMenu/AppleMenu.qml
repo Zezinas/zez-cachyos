@@ -34,11 +34,13 @@ Scope {
 
                 property int maxTextWidth: 0
 
-                MenuItem { id: label1; text: "TESTING"; color: "white" }
+                MenuItem { text: "TESTING"; color: "white" }
 
-                MenuItem { id: label2; text: "TESTING menu" }
+                MenuItem { text: "TESTING menu" }
 
-                MenuItem { id: label3; text: "TESTING menuItem2"; color: "blue" }
+                Separator {}
+
+                MenuItem { text: "TESTING menuItem2"; color: "blue" }
 
                 Component.onCompleted: {
                     Qt.callLater(() => {
