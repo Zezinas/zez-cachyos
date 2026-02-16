@@ -7,40 +7,50 @@ import ".."
 import "."
 
 Scope {
-    PanelWindow {
-        anchors {
-            top: true
-            left: true
-        }
+    PopupWindow {
+        id: root
 
-        color: "cyan"
+        property var anchorButton: null
+        property var anchorWindow: null
+
+        visible: anchorButton !== null && anchorWindow !== null
+
+        // Proper positioning
+        anchor.window: anchorWindow
+        anchor.rect: anchorButton ? Qt.rect(0, anchorButton.height, anchorButton.width, 0) : Qt.rect(0,0,0,0)
+
+        color: "transparent"
 
         implicitWidth: base.implicitWidth
         implicitHeight: base.implicitHeight
 
         Rectangle {
             id: base
-            color: Qt.rgba(0, 0, 0, 0.5)
+            color: Theme.bg
+            radius: Theme.appleMenuRadius
 
-            implicitWidth: column.implicitWidth + 50 * 2
-            implicitHeight: column.implicitHeight + 50 * 2
+            border.color: Theme.bgOutline
+            border.width: Theme.appleMenuOutline
+
+            implicitWidth: column.implicitWidth + Theme.appleMenuPadding * 2
+            implicitHeight: column.implicitHeight + Theme.appleMenuPadding * 2
 
             ColumnLayout {
                 id: column
-                anchors.margins: 50
+                anchors.margins: Theme.appleMenuPadding
                 anchors.fill: parent
 
-                spacing: 10
+                spacing: 0
 
                 property int maxTextWidth: 0
 
-                MenuItem { text: "TESTING"; color: "white" }
+                MenuItem { text: "TESTING" }
 
                 MenuItem { text: "TESTING menu" }
 
                 Separator {}
 
-                MenuItem { text: "TESTING menuItem2"; color: "blue" }
+                MenuItem { text: "TESTING menuItem2" }
 
                 Component.onCompleted: {
                     Qt.callLater(() => {

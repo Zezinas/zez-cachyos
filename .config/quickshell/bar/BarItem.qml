@@ -5,12 +5,11 @@ import ".."
 
 Rectangle {
     id: root
+    signal clicked(var self)
 
     property alias text: label.text
     property int fontSizeOverride: 0  // 0 = use Theme default
     property int fontWeightOverride: 0  // 0 = use Theme default
-
-    signal clicked()   // <-- new signal
 
     height: Theme.barHeight
     radius: Theme.radius
@@ -36,8 +35,8 @@ Rectangle {
         hoverEnabled: true
 
         onClicked: {
-            root.clicked()                    // emit the signal
-            console.log(root.text + " clicked")  // debug log
+            root.clicked(root)
+            console.log("BarItem.qml | ", "BarItem clicked! Rectangle id:", root.id, "text:", root.text, "### " + root)
         }
     }
 }

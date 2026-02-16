@@ -6,10 +6,10 @@ Rectangle {
     id: root
 
     // 🔹 Custom properties for flexibility
-    property int horizontalPadding: 20
-    property int verticalPadding: 10
-    property color separatorColor: "yellow"
-    property int separatorHeight: 2
+    property int horizontalPadding: Theme.appleMenuTextPaddingH
+    property int verticalPadding: Theme.appleMenuTextPaddingV
+    property color separatorColor: Theme.bgOutline
+    property int separatorHeight: Theme.appleMenuOutline
 
     // 🔹 Apply to Rectangle
     color: separatorColor

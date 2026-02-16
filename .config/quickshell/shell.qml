@@ -4,21 +4,33 @@ import "bar"
 import "appleMenu"
 
 Scope {
-    LazyLoader {
-      id: appleMenuLoader
-      active: false
+    property var appleAnchorButton: null
+    property var appleBarWindow: bar    // the PanelWindow inside Bar.qml
 
-      AppleMenu {}
+    // LazyLoader {
+    //     id: appleMenuLoader
+    //     active: appleAnchorButton !== null
+
+    //     AppleMenu {
+    //         id: appleMenuInstance
+    //         anchorButton: appleAnchorButton
+    //         anchorWindow: appleBarWindow
+    //     }
+    // }
+
+    Bar {
+        id: bar
+
+        onToggleAppleMenu: (button) => {
+            console.log("shell.qml | ", "BarItem clicked! Rectangle id:", button.id, "text:", button.text, "### " + button)
+
+            // optional: still toggle variable for testing
+            if (appleAnchorButton === button) {
+                appleAnchorButton = null
+            } else {
+                appleAnchorButton = button
+            }
+        }
     }
 
-  Bar {
-    id: bar
-
-    onToggleAppleMenu: {
-        console.log("signal working shell.qml - onToggleAppleMenu")  // debug log
-        appleMenuLoader.active = !appleMenuLoader.active
-    }
-  }
-
-  AppleMenu {}
 }

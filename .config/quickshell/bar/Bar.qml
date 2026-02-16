@@ -6,7 +6,7 @@ import "modules"
 
 
 Scope {
-  signal toggleAppleMenu()   // <-- apple menu toggle signal
+  signal toggleAppleMenu(var button)   // <-- apple menu toggle signal
 
   Variants {
     model: Quickshell.screens
@@ -35,7 +35,18 @@ Scope {
           spacing: Theme.spacing
           anchors.leftMargin: Theme.edgeMargin
 
-          BarItem { text: ""; fontSizeOverride: 22; onClicked: toggleAppleMenu() }
+          BarItem {
+              id: appleButton
+              text: ""
+              fontSizeOverride: 22
+
+              onClicked: (buttonRect) => {
+                  console.log("Bar.qml | ", "BarItem clicked! Rectangle id:", buttonRect.id, "text:", buttonRect.text, "### " + buttonRect)
+
+                  // re-emit the Bar signal
+                  toggleAppleMenu(buttonRect)
+              }
+          }
 
           BarItem { text: "Alacritty"; fontWeightOverride: 700 }
           BarItem { text: "File" }

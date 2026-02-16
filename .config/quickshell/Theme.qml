@@ -6,11 +6,12 @@ QtObject {
     // GENERAL BAR THEMING
 
     // Colors
-    // property color bg: Qt.rgba(28/255, 28/255, 28/255, 0.75)
-    property color bg: Qt.rgba(255/255, 0/255, 0/255, 0.3)
+    property color bg: Qt.rgba(28/255, 28/255, 28/255, 0.75)
+    // property color bg: Qt.rgba(255/255, 0/255, 0/255, 0.3)
     property color bgHover: Qt.rgba(255/255, 255/255, 255/255, 0.10)
     property color bgActive: Qt.rgba(255/255, 255/255, 255/255, 0.15)
-    property color bgOutline: Qt.rgba(88/255, 88/255, 88/255, 0.75)
+    property color fgActive: Qt.rgba(10/255, 132/255, 255/255, 1)
+    property color bgOutline: Qt.rgba(255/255, 255/255, 255/255, 0.08)
 
     property color text: Qt.rgba(1, 1, 1, 0.9)
 
