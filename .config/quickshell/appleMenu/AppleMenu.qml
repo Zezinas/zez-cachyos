@@ -34,23 +34,25 @@ Scope {
 
                 property int maxTextWidth: 0
 
-                MenuItem { id: label1; text: "TESTING menuItem"; color: "white" }
+                MenuItem { id: label1; text: "TESTING"; color: "white" }
 
-                MenuItem { id: label2; text: "TESTING menuItem 1234567890 1234567890" }
+                MenuItem { id: label2; text: "TESTING menu" }
 
                 MenuItem { id: label3; text: "TESTING menuItem2"; color: "blue" }
 
                 Component.onCompleted: {
                     Qt.callLater(() => {
-                        maxTextWidth = Math.max(label1.implicitWidth,
-                                                label2.implicitTextWidth,
-                                                label3.implicitTextWidth)
+                        // var items = column.children.filter(function(c) { return c instanceof QtObject ? false : c.metaObject.className === "QQuickRectangle"; })
+                        // Alternatively, just select MenuItems
+                        var menuItems = column.children.filter(function(c) { return c.hasOwnProperty("implicitTextWidth") })
+
+                        // compute max text width
+                        maxTextWidth = Math.max.apply(null, menuItems.map(function(item) { return item.implicitTextWidth }))
+
                         console.log("Calculated maxTextWidth:", maxTextWidth)
 
-                        // Apply override to match all widths
-                        label1.overrideWidth = maxTextWidth
-                        label2.overrideWidth = maxTextWidth
-                        label3.overrideWidth = maxTextWidth
+                        // Apply overrideWidth to all menuItems
+                        menuItems.forEach(function(item) { item.overrideWidth = maxTextWidth })
                     })
                 }
             }
