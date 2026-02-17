@@ -74,14 +74,22 @@ PanelWindow {
           id: rec2
           color: "green"
 
-          height: 134
+          height: 63
           Layout.fillWidth: true
       }
       Rectangle {
           id: rec3
           color: "blue"
 
-          height: 134
+          height: 63
+          Layout.fillWidth: true
+      }
+
+      Rectangle {
+          id: rec4
+          color: "orange"
+
+          height: 63
           Layout.fillWidth: true
       }
   }
