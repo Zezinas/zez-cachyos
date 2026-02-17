@@ -46,13 +46,16 @@ Scope {
 
                 property int maxTextWidth: 0
 
-                MenuItem { text: "TESTING" }
-
-                MenuItem { text: "TESTING menu" }
-
+                MenuItem { text: "About This PC" }
                 Separator {}
-
-                MenuItem { text: "TESTING menuItem2" }
+                MenuItem { text: "Software Updates..." }
+                MenuItem { text: "Terminal" }
+                Separator {}
+                MenuItem { text: "Sleep" }
+                MenuItem { text: "Restart" }
+                MenuItem { text: "Shut Down" }
+                Separator {}
+                MenuItem { text: "Lock Screen" }
 
                 Component.onCompleted: {
                     Qt.callLater(() => {

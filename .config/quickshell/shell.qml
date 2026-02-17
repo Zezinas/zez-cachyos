@@ -2,6 +2,7 @@
 import Quickshell
 import "bar"
 import "appleMenu"
+import "controlCenter"
 
 Scope {
     property var appleAnchorButton: null
@@ -34,12 +35,14 @@ Scope {
         }
     }
 
-    AppleMenu {
-        id: appleMenuInstance
+    // AppleMenu {
+    //     id: appleMenuInstance
 
-        open: appleMenuOpen
-        anchorButton: appleAnchorButton
-        anchorWindow: appleBarWindow
-    }
+    //     open: appleMenuOpen
+    //     anchorButton: appleAnchorButton
+    //     anchorWindow: appleBarWindow
+    // }
+
+    ControlCenter {}
 
 }

@@ -30,11 +30,11 @@ QtObject {
     property int edgeMargin: 5
 
     // APPLE MENU STYLING
-    property int appleMenuTextPaddingH: 18        // text horizontal padding
-    property int appleMenuTextPaddingV: 4         // text vertical padding
-    property int appleMenuRadius: 12              // border radius for menu container
-    property int appleMenuOutline: 2              // inner outline width (like border thickness)
-    property int appleMenuPadding: 10             // padding inside menu
+    property int appleMenuTextPaddingH: 9        // 18 // text horizontal padding
+    property int appleMenuTextPaddingV: 2         //  4 // text vertical padding
+    property int appleMenuRadius: 6              // 12 // border radius for menu container
+    property int appleMenuOutline: 1              //  2 // inner outline width (like border thickness)
+    property int appleMenuPadding: 5             // 10 // padding inside menu
 
 
 
