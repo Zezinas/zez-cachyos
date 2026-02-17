@@ -7,17 +7,19 @@ import ".."
 import "."
 
 Scope {
+    property var anchorButton: null
+    property var anchorWindow: null
+    property bool open: false
+
     PopupWindow {
         id: root
 
-        property var anchorButton: null
-        property var anchorWindow: null
+        visible: open
 
-        visible: anchorButton !== null && anchorWindow !== null
+        property rect cachedRect: Qt.rect(0,0,0,0)
 
-        // Proper positioning
-        anchor.window: anchorWindow
-        anchor.rect: anchorButton ? Qt.rect(0, anchorButton.height, anchorButton.width, 0) : Qt.rect(0,0,0,0)
+        anchor.window: anchorWindow ? anchorWindow : null
+        anchor.rect: cachedRect
 
         color: "transparent"
 
@@ -71,4 +73,9 @@ Scope {
         }
     }
 
+    onAnchorButtonChanged: {
+        if (anchorButton && root) {
+            root.cachedRect = Qt.rect(0, anchorButton.height, anchorButton.width, 0)
+        }
+    }
 }

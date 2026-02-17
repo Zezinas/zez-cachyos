@@ -6,12 +6,13 @@ import "modules"
 
 
 Scope {
-  signal toggleAppleMenu(var button)   // <-- apple menu toggle signal
+  signal toggleAppleMenu(var button, var window)   // <-- apple menu toggle signal
 
   Variants {
     model: Quickshell.screens
 
     PanelWindow {
+      id: barWindow
       required property var modelData
       screen: modelData
 
@@ -41,10 +42,10 @@ Scope {
               fontSizeOverride: 22
 
               onClicked: (buttonRect) => {
-                  console.log("Bar.qml | ", "BarItem clicked! Rectangle id:", buttonRect.id, "text:", buttonRect.text, "### " + buttonRect)
+                  console.log("Bar.qml | ", "BarItem clicked! Rectangle id:", buttonRect.id, "text:", buttonRect.text, "### " + buttonRect, " ### Window: ", barWindow)
 
                   // re-emit the Bar signal
-                  toggleAppleMenu(buttonRect)
+                  toggleAppleMenu(buttonRect, barWindow)
               }
           }
 
