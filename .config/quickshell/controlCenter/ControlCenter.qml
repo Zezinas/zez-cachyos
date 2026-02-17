@@ -1,5 +1,6 @@
 import Quickshell
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import ".."
 
@@ -24,27 +25,46 @@ PanelWindow {
       anchors.left: parent.left
       anchors.right: parent.right
 
-      RowLayout {
+      RowLayout { // 1st ROW
           spacing: 10
 
-          Rectangle {
-              id: rec11
+          Rectangle { // Network Panel
+              id: networkPanel
               color: "white"
 
               height: 134
               Layout.preferredWidth: height
-              // Layout.fillWidth: true
+
+              ColumnLayout {
+                  spacing: 0
+                  anchors.margins: 10
+                  anchors.fill: parent
+
+                  MiniItem { iconText: "W"; mainTextStr: "Wi-Fi"; optionalTextStr: "TP-Link_81A4"; isOn: true }
+                  MiniItem { iconText: "B"; mainTextStr: "Bluetooth"; optionalTextStr: "On"; isOn: true }
+                  MiniItem { iconText: "A"; mainTextStr: "AirDrop"; optionalTextStr: "Off"; isOn: false }
+
+              }
           }
 
           ColumnLayout {
               spacing: 10
 
-              Rectangle {
+              Rectangle { // Do Not Disturb
                   id: rec12
-                  color: "dark red"
+                  color: "light yellow"
 
                   Layout.fillWidth: true
                   Layout.fillHeight: true
+
+                  ColumnLayout {
+                      spacing: 0
+                      anchors.margins: 10
+                      anchors.fill: parent
+
+                      MiniItem { iconText: "F"; mainTextStr: "Focus"; isOn: false }
+
+                  }
               }
 
               RowLayout {
@@ -70,13 +90,8 @@ PanelWindow {
 
       }
 
-      Rectangle {
-          id: rec2
-          color: "green"
+      SliderItem { mainTextStr: "Display"; iconText: "D" }
 
-          height: 63
-          Layout.fillWidth: true
-      }
       Rectangle {
           id: rec3
           color: "blue"
