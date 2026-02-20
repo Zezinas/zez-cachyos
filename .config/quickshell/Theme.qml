@@ -36,11 +36,14 @@ QtObject {
     property int appleMenuOutline: 1              //  2 // inner outline width (like border thickness)
     property int appleMenuPadding: 5             // 10 // padding inside menu
 
-    // CONTROL CENTER STYLING
+    // CONTROL CENTER STYLING (Light)
     property color bgFig03: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.15) // Background #03
-    property color bgFig02: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.50) // Background #02
+    property color bgFig02: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.30) // Background #02
     property color bgFig01: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.80) // Background #01
 
     property color plusDarker: Qt.rgba(0 / 255, 0 / 255, 0 / 255, 0.05)
     property color plusLigher: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.15)
+
+    // BAR
+    property color bgBar: Qt.rgba(30 / 255, 30 / 255, 30 / 255, 0.35)
 }
