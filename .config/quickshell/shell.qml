@@ -35,13 +35,15 @@ Scope {
         }
     }
 
-    AppleMenu {
-        id: appleMenuInstance
+    // AppleMenu {
+    //     id: appleMenuInstance
 
-        open: appleMenuOpen
-        anchorButton: appleAnchorButton
-        anchorWindow: appleBarWindow
-    }
+    //     open: appleMenuOpen
+    //     anchorButton: appleAnchorButton
+    //     anchorWindow: appleBarWindow
+    // }
 
     ControlCenter {}
+
+    AppleMenu2 {}
 }
