@@ -50,7 +50,7 @@ PanelWindow {
                     anchors.fill: parent
 
                     MiniItem {
-                        iconText: "W"
+                        iconText: "􀙇" // 􀙇 􀙈 􀴞
                         mainTextStr: "Wi-Fi"
                         optionalTextStr: "TP-Link_81A4"
                         isOn: true
@@ -87,7 +87,7 @@ PanelWindow {
                         anchors.fill: parent
 
                         MiniItem {
-                            iconText: "F"
+                            iconText: "􀆺"
                             mainTextStr: "Focus"
                             isOn: false
                         }
@@ -122,13 +122,13 @@ PanelWindow {
         SliderItem {
             // Display
             mainTextStr: "Display"
-            iconText: "D"
+            iconText: "􀆮" //
         }
 
         SliderItem {
             // Sound
             mainTextStr: "Sound"
-            iconText: "S"
+            iconText: "􀊡" // 􀑈 􀊣􀊡􀊥􀊧􀊩
         }
 
         Rectangle { // media

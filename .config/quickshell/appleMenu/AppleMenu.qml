@@ -16,7 +16,7 @@ Scope {
 
         visible: open
 
-        property rect cachedRect: Qt.rect(0,0,0,0)
+        property rect cachedRect: Qt.rect(0, 0, 0, 0)
 
         anchor.window: anchorWindow ? anchorWindow : null
         anchor.rect: cachedRect
@@ -28,10 +28,10 @@ Scope {
 
         Rectangle {
             id: base
-            color: Theme.bg
+            color: Theme.bgFig02
             radius: Theme.appleMenuRadius
 
-            border.color: Theme.bgOutline
+            border.color: Theme.plusDarker
             border.width: Theme.appleMenuOutline
 
             implicitWidth: column.implicitWidth + Theme.appleMenuPadding * 2
@@ -46,31 +46,51 @@ Scope {
 
                 property int maxTextWidth: 0
 
-                MenuItem { text: "About This PC" }
+                MenuItem {
+                    text: "About This PC"
+                }
                 Separator {}
-                MenuItem { text: "Software Updates..." }
-                MenuItem { text: "Terminal" }
+                MenuItem {
+                    text: "Software Updates..."
+                }
+                MenuItem {
+                    text: "Terminal"
+                }
                 Separator {}
-                MenuItem { text: "Sleep" }
-                MenuItem { text: "Restart" }
-                MenuItem { text: "Shut Down" }
+                MenuItem {
+                    text: "Sleep"
+                }
+                MenuItem {
+                    text: "Restart"
+                }
+                MenuItem {
+                    text: "Shut Down"
+                }
                 Separator {}
-                MenuItem { text: "Lock Screen" }
+                MenuItem {
+                    text: "Lock Screen"
+                }
 
                 Component.onCompleted: {
                     Qt.callLater(() => {
                         // var items = column.children.filter(function(c) { return c instanceof QtObject ? false : c.metaObject.className === "QQuickRectangle"; })
                         // Alternatively, just select MenuItems
-                        var menuItems = column.children.filter(function(c) { return c.hasOwnProperty("implicitTextWidth") })
+                        var menuItems = column.children.filter(function (c) {
+                            return c.hasOwnProperty("implicitTextWidth");
+                        });
 
                         // compute max text width
-                        maxTextWidth = Math.max.apply(null, menuItems.map(function(item) { return item.implicitTextWidth }))
+                        maxTextWidth = Math.max.apply(null, menuItems.map(function (item) {
+                            return item.implicitTextWidth;
+                        }));
 
-                        console.log("Calculated maxTextWidth:", maxTextWidth)
+                        console.log("Calculated maxTextWidth:", maxTextWidth);
 
                         // Apply overrideWidth to all menuItems
-                        menuItems.forEach(function(item) { item.overrideWidth = maxTextWidth })
-                    })
+                        menuItems.forEach(function (item) {
+                            item.overrideWidth = maxTextWidth;
+                        });
+                    });
                 }
             }
         }
@@ -78,7 +98,7 @@ Scope {
 
     onAnchorButtonChanged: {
         if (anchorButton && root) {
-            root.cachedRect = Qt.rect(0, anchorButton.height, anchorButton.width, 0)
+            root.cachedRect = Qt.rect(0, anchorButton.height, anchorButton.width, 0);
         }
     }
 }

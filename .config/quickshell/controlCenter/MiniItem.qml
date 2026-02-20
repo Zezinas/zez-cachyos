@@ -43,6 +43,9 @@ Rectangle {
                 color: root.isOn ? "white" : "black"
                 font.pixelSize: 13
                 anchors.centerIn: parent
+
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
             }
         }
 
@@ -59,6 +62,9 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "black"
                 font.pixelSize: 13
+
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
             }
 
             Text {
@@ -70,6 +76,9 @@ Rectangle {
                 Layout.fillWidth: true
                 color: "black"
                 font.pixelSize: 11
+
+                font.family: Theme.fontFamily
+                font.weight: Theme.fontWeight
             }
         }
     }
