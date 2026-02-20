@@ -6,12 +6,12 @@ QtObject {
     // GENERAL BAR THEMING
 
     // Colors
-    property color bg: Qt.rgba(28/255, 28/255, 28/255, 0.75)
+    property color bg: Qt.rgba(28 / 255, 28 / 255, 28 / 255, 0.75)
     // property color bg: Qt.rgba(255/255, 0/255, 0/255, 0.3)
-    property color bgHover: Qt.rgba(255/255, 255/255, 255/255, 0.10)
-    property color bgActive: Qt.rgba(255/255, 255/255, 255/255, 0.15)
-    property color fgActive: Qt.rgba(10/255, 132/255, 255/255, 1)
-    property color bgOutline: Qt.rgba(255/255, 255/255, 255/255, 0.08)
+    property color bgHover: Qt.rgba(255 / 255, 255 / 255, 255 / 255, 0.10)
+    property color bgActive: Qt.rgba(255 / 255, 255 / 255, 255 / 255, 0.15)
+    property color fgActive: Qt.rgba(10 / 255, 132 / 255, 255 / 255, 1)
+    property color bgOutline: Qt.rgba(255 / 255, 255 / 255, 255 / 255, 0.08)
 
     property color text: Qt.rgba(1, 1, 1, 0.9)
 
@@ -36,6 +36,11 @@ QtObject {
     property int appleMenuOutline: 1              //  2 // inner outline width (like border thickness)
     property int appleMenuPadding: 5             // 10 // padding inside menu
 
+    // CONTROL CENTER STYLING
+    property color bgFig03: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.15) // Background #03
+    property color bgFig02: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.50) // Background #02
+    property color bgFig01: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.80) // Background #01
 
-
+    property color plusDarker: Qt.rgba(0 / 255, 0 / 255, 0 / 255, 0.05)
+    property color plusLigher: Qt.rgba(245 / 255, 245 / 255, 245 / 255, 0.15)
 }

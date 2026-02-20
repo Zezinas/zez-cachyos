@@ -17,11 +17,10 @@ Rectangle {
     Layout.fillHeight: true
     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
-    color: Qt.rgba(30/255, 30/255, 0/255, 0.3)
-    radius: 10
+    color: "transparent"
 
     RowLayout {
-        id:base
+        id: base
 
         anchors.fill: parent
 

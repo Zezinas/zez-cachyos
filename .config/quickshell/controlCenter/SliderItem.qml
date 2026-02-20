@@ -10,31 +10,30 @@ Rectangle {
 
     property string mainTextStr: ""
     property string iconText: ""
-    property double percentage: 0.5      // 0.00
+    property real value: 0.3   // 0.0 - 1.0
 
     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
     Layout.fillWidth: true
     Layout.preferredHeight: 63
 
-    color: "green"
+    color: Theme.bgFig02
     radius: 10
 
     ColumnLayout {
-        id:base
+        id: base
 
         anchors.fill: parent
         anchors.margins: 10
 
-        spacing: 8
+        spacing: 0
         height: 38
 
         Text {
             text: root.mainTextStr
             font.pixelSize: 12
-            color: "white"
+            color: "black"
             Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
         }
-
 
         Rectangle {
             id: bgSlider
@@ -45,8 +44,7 @@ Rectangle {
             Layout.preferredHeight: radius * 2
             Layout.fillWidth: true
 
-            color: "grey"
-
+            color: Theme.plusDarker
 
             Rectangle {
                 id: fgSlider
@@ -58,9 +56,38 @@ Rectangle {
                 }
 
                 radius: parent.radius
-                width: ((parent.width - 2 * radius) * percentage + 2 * radius)
+                width: ((parent.width - 2 * radius) * root.value + 2 * radius)
 
                 color: "white"
+
+                Behavior on width {
+                    NumberAnimation {
+                        duration: 100
+                    }
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                hoverEnabled: true
+
+                function updateValue(xPos) {
+                    let v = xPos / width;
+                    v = Math.max(0, Math.min(1, v));   // clamp 0–1
+                    root.value = v;
+                }
+
+                onPressed: updateValue(mouse.x)
+                onPositionChanged: if (pressed)
+                    updateValue(mouse.x)
+
+                onWheel: wheel => {
+                    let step = 0.05;
+                    if (wheel.angleDelta.y > 0)
+                        root.value = Math.min(1, root.value + step);
+                    else
+                        root.value = Math.max(0, root.value - step);
+                }
             }
         }
     }

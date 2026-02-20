@@ -5,107 +5,139 @@ import QtQuick.Layouts
 import ".."
 
 PanelWindow {
-  id: window
+    id: window
 
-  anchors {
-    top: true
-    right: true
-  }
+    anchors {
+        top: true
+        right: true
+    }
 
-  color: "cyan"
-  width: 298
-  height: base.height + 20  // bind to base
+    color: "transparent"
+    width: 298
+    height: base.height + 20  // bind to base
 
-  ColumnLayout {
-      id: base
+    Rectangle {
+        id: root
+        anchors.fill: parent
+        radius: 15
+        color: Theme.bgFig03
+    }
 
-      anchors.margins: 10
-      spacing: 10
-      anchors.top: parent.top
-      anchors.left: parent.left
-      anchors.right: parent.right
+    ColumnLayout {
+        id: base
 
-      RowLayout { // 1st ROW
-          spacing: 10
+        anchors.margins: 10
+        spacing: 10
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-          Rectangle { // Network Panel
-              id: networkPanel
-              color: "white"
+        RowLayout {
+            // 1st ROW
+            spacing: 10
 
-              height: 134
-              Layout.preferredWidth: height
+            Rectangle { // Network Panel
+                id: networkPanel
+                radius: 10
+                color: Theme.bgFig02
 
-              ColumnLayout {
-                  spacing: 0
-                  anchors.margins: 10
-                  anchors.fill: parent
+                height: 134
+                Layout.preferredWidth: height
 
-                  MiniItem { iconText: "W"; mainTextStr: "Wi-Fi"; optionalTextStr: "TP-Link_81A4"; isOn: true }
-                  MiniItem { iconText: "B"; mainTextStr: "Bluetooth"; optionalTextStr: "On"; isOn: true }
-                  MiniItem { iconText: "A"; mainTextStr: "AirDrop"; optionalTextStr: "Off"; isOn: false }
+                ColumnLayout {
+                    spacing: 0
+                    anchors.margins: 10
+                    anchors.fill: parent
 
-              }
-          }
+                    MiniItem {
+                        iconText: "W"
+                        mainTextStr: "Wi-Fi"
+                        optionalTextStr: "TP-Link_81A4"
+                        isOn: true
+                    }
+                    MiniItem {
+                        iconText: "B"
+                        mainTextStr: "Bluetooth"
+                        optionalTextStr: "On"
+                        isOn: true
+                    }
+                    MiniItem {
+                        iconText: "A"
+                        mainTextStr: "AirDrop"
+                        optionalTextStr: "Off"
+                        isOn: false
+                    }
+                }
+            }
 
-          ColumnLayout {
-              spacing: 10
+            ColumnLayout {
+                spacing: 10
 
-              Rectangle { // Do Not Disturb
-                  id: rec12
-                  color: "light yellow"
+                Rectangle { // Do Not Disturb
+                    id: rec12
+                    radius: 10
+                    color: Theme.bgFig02
 
-                  Layout.fillWidth: true
-                  Layout.fillHeight: true
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
 
-                  ColumnLayout {
-                      spacing: 0
-                      anchors.margins: 10
-                      anchors.fill: parent
+                    ColumnLayout {
+                        spacing: 0
+                        anchors.margins: 10
+                        anchors.fill: parent
 
-                      MiniItem { iconText: "F"; mainTextStr: "Focus"; isOn: false }
+                        MiniItem {
+                            iconText: "F"
+                            mainTextStr: "Focus"
+                            isOn: false
+                        }
+                    }
+                }
 
-                  }
-              }
+                RowLayout {
+                    // other 2 optional buttons TODO
+                    spacing: 10
 
-              RowLayout {
-                  spacing: 10
+                    Rectangle {
+                        id: rec13
+                        radius: 10
+                        color: Theme.bgFig02
 
-                  Rectangle {
-                      id: rec13
-                      color: "red"
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                    }
 
-                      Layout.fillWidth: true
-                      Layout.fillHeight: true
-                  }
+                    Rectangle {
+                        id: rec14
+                        radius: 10
+                        color: Theme.bgFig02
 
-                  Rectangle {
-                      id: rec14
-                      color: "pink"
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                    }
+                }
+            }
+        }
 
-                      Layout.fillWidth: true
-                      Layout.fillHeight: true
-                  }
-              }
-          }
+        SliderItem {
+            // Display
+            mainTextStr: "Display"
+            iconText: "D"
+        }
 
-      }
+        SliderItem {
+            // Sound
+            mainTextStr: "Sound"
+            iconText: "S"
+        }
 
-      SliderItem { mainTextStr: "Display"; iconText: "D" }
+        Rectangle { // media
+            id: rec4
+            radius: 10
+            color: Theme.bgFig02
 
-      Rectangle {
-          id: rec3
-          color: "blue"
-
-          height: 63
-          Layout.fillWidth: true
-      }
-
-      Rectangle {
-          id: rec4
-          color: "orange"
-
-          height: 63
-          Layout.fillWidth: true
-      }
-  }
+            height: 63
+            Layout.fillWidth: true
+        }
+    }
 }
