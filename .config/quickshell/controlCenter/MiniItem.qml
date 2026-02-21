@@ -35,12 +35,12 @@ Rectangle {
             radius: 13
             Layout.preferredWidth: radius * 2
             Layout.preferredHeight: radius * 2
-            color: root.isOn ? "blue" : "gray"
+            color: root.isOn ? Theme.fgBlue : Theme.plusDarker
 
             Text {
                 id: icon
                 text: root.iconText
-                color: root.isOn ? "white" : "black"
+                color: root.isOn ? Theme.bgFig01 : Theme.textSecondary
                 font.pixelSize: 13
                 anchors.centerIn: parent
 
@@ -60,7 +60,7 @@ Rectangle {
                 text: root.mainTextStr
 
                 Layout.fillWidth: true
-                color: "black"
+                color: Theme.textPrimary
                 font.pixelSize: 13
 
                 font.family: Theme.fontFamily
@@ -74,7 +74,7 @@ Rectangle {
                 elide: Text.ElideRight   // <-- this cuts off with "..."
 
                 Layout.fillWidth: true
-                color: "black"
+                color: Theme.textSecondary
                 font.pixelSize: 11
 
                 font.family: Theme.fontFamily

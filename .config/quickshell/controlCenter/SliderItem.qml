@@ -30,15 +30,20 @@ Rectangle {
 
         Text {
             text: root.mainTextStr
+
+            color: Theme.textPrimary
             font.pixelSize: 12
-            color: "black"
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+
+            font.family: Theme.fontFamily
+            font.weight: Theme.fontWeight
+
+            Layout.alignment: Qt.AlignLeft | Qt.AlignTop
         }
 
         Rectangle {
             id: bgSlider
 
-            Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
+            Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
 
             radius: 11
             Layout.preferredHeight: radius * 2
@@ -58,7 +63,47 @@ Rectangle {
                 radius: parent.radius
                 width: ((parent.width - 2 * radius) * root.value + 2 * radius)
 
-                color: "white"
+                color: Theme.bgFig01
+
+                Text {
+                    id: sliderIcon
+                    text: root.iconText
+
+                    anchors {
+                        left: parent.left
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
+
+                    width: height
+
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+
+                    color: Theme.textPrimary
+                    font {
+                        pixelSize: 8
+                        family: Theme.fontFamily
+                        weight: 700
+                    }
+                }
+
+                Rectangle {
+                    id: handle
+
+                    visible: fgSlider.width > (bgSlider.radius * 4)
+
+                    anchors {
+                        right: parent.right
+                        top: parent.top
+                        bottom: parent.bottom
+                    }
+
+                    radius: bgSlider.radius
+                    width: height
+
+                    color: Theme.bgFig01
+                }
 
                 Behavior on width {
                     NumberAnimation {

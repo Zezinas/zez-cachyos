@@ -1,3 +1,4 @@
+// ControlCenter.qml
 import Quickshell
 import QtQuick
 import QtQuick.Controls
