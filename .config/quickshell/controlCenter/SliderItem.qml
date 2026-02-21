@@ -9,9 +9,14 @@ Rectangle {
     id: root
     signal valueUpdated(real v)
 
+    function setValueExternal(v) {
+        // clamp 0–1
+        value = Math.max(0, Math.min(1, v))
+    }
+
     property string mainTextStr: ""
     property string iconText: ""
-    property real value: 0.3   // 0.0 - 1.0
+    property real value: 0.00   // 0.0 - 1.0
 
     Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
     Layout.fillWidth: true

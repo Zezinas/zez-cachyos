@@ -120,16 +120,24 @@ PanelWindow {
             }
         }
 
+        DdcLogic {
+            id: ddcLogic
+        }
+
         SliderItem {
+            id: brightnessSlider
             // Display
             mainTextStr: "Display"
             iconText: "􀆮" //
 
-            onValueUpdated: function(v) {
-                console.log("Slider changed:", v)
+            // Bind initial and updated value from logic
+            value: ddcLogic.brightness
+
+            onValueUpdated: function (v) {
+                console.log("Slider changed:", v);
+                ddcLogic.updateBrightness(v);
             }
         }
-        // journalctl --user -f
 
         SliderItem {
             // Sound
