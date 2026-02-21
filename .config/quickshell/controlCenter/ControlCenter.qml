@@ -124,7 +124,12 @@ PanelWindow {
             // Display
             mainTextStr: "Display"
             iconText: "􀆮" //
+
+            onValueUpdated: function(v) {
+                console.log("Slider changed:", v)
+            }
         }
+        // journalctl --user -f
 
         SliderItem {
             // Sound

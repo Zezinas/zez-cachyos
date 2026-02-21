@@ -7,6 +7,7 @@ import ".."
 
 Rectangle {
     id: root
+    signal valueUpdated(real v)
 
     property string mainTextStr: ""
     property string iconText: ""
@@ -120,6 +121,7 @@ Rectangle {
                     let v = xPos / width;
                     v = Math.max(0, Math.min(1, v));   // clamp 0–1
                     root.value = v;
+                    root.valueUpdated(root.value)
                 }
 
                 onPressed: updateValue(mouse.x)
@@ -132,6 +134,8 @@ Rectangle {
                         root.value = Math.min(1, root.value + step);
                     else
                         root.value = Math.max(0, root.value - step);
+
+                    root.valueUpdated(root.value)
                 }
             }
         }
