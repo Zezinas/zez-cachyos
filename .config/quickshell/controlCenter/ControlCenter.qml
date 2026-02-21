@@ -130,19 +130,29 @@ PanelWindow {
             mainTextStr: "Display"
             iconText: "􀆮" //
 
-            // Bind initial and updated value from logic
             value: ddcLogic.brightness
 
             onValueUpdated: function (v) {
-                console.log("Slider changed:", v);
                 ddcLogic.updateBrightness(v);
             }
         }
 
+        SoundLogic {
+            id: soundLogic
+        }
+
         SliderItem {
+            id: soundSlider
             // Sound
             mainTextStr: "Sound"
-            iconText: "􀊡" // 􀑈 􀊣􀊡􀊥􀊧􀊩
+            iconText: "􀊡" // 􀑈 􀊣 􀊥􀊧􀊩 􀊡
+
+            value: soundLogic.volume
+
+            onValueUpdated: function(v) {
+                console.log("Volume updated to: " + v);
+                soundLogic.updateVolume(v)
+            }
         }
 
         Rectangle { // media

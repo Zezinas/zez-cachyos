@@ -1,3 +1,4 @@
+// DdcLogic.qml
 import Quickshell
 import Quickshell.Io
 import QtQuick
@@ -6,7 +7,7 @@ QtObject {
     id: logic
     property real brightness: 0.5 // Default fallback
 
-    // Timer for debounced updates (moved from ControlCenter)
+    // Timer for debounced updates
     property Timer debounce: Timer {
         interval: 100
         repeat: false
