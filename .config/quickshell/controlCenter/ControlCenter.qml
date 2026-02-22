@@ -50,17 +50,17 @@ PanelWindow {
                     anchors.margins: 10
                     anchors.fill: parent
 
-                    NetworkLogic {
-                        id: networkLogic
+                    WifiLogic {
+                        id: wifiLogic
                     }
 
                     MiniItem {
                         mainTextStr: "Wi-Fi"
                         iconBaseName: "wifi"
-                        optionalTextStr: networkLogic.wifiSSID
-                        state: networkLogic.wifiState // Directly uses 0, 1, 2, 3, or 4
+                        optionalTextStr: wifiLogic.wifiSSID
+                        state: wifiLogic.wifiState // Directly uses 0, 1, 2, 3, or 4
 
-                        onIconClicked: networkLogic.toggleWifi()
+                        onIconClicked: wifiLogic.toggleWifi()
                     }
 
                     MiniItem {
