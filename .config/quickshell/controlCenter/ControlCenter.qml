@@ -51,22 +51,45 @@ PanelWindow {
                     anchors.fill: parent
 
                     MiniItem {
-                        iconText: "􀙇" // 􀙇 􀙈 􀴞
                         mainTextStr: "Wi-Fi"
                         optionalTextStr: "TP-Link_81A4"
-                        isOn: true
+
+                        iconBaseName: "wifi"
+                        state: 4
+
+                        onIconClicked: {
+                            console.log("Wi-Fi icon clicked | state:", state)
+                            toggleWifi()
+                        }
+
+                        onItemClicked: {
+                            console.log("Wi-Fi item clicked")
+                            openWifiMenu()
+                        }
                     }
                     MiniItem {
-                        iconText: "B"
                         mainTextStr: "Bluetooth"
                         optionalTextStr: "On"
-                        isOn: true
+
+                        iconBaseName: "bt"
+                        state: 1
+
+                        onIconClicked: {
+                                console.log("Bluetooth icon clicked | state:", state)
+                                toggleBt()
+                            }
+
+                            onItemClicked: {
+                                console.log("Bluetooth item clicked")
+                                openBtMenu()
+                            }
                     }
                     MiniItem {
-                        iconText: "A"
                         mainTextStr: "AirDrop"
                         optionalTextStr: "Off"
-                        isOn: false
+
+                        iconBaseName: "air"
+                        state: 0
                     }
                 }
             }
@@ -88,9 +111,10 @@ PanelWindow {
                         anchors.fill: parent
 
                         MiniItem {
-                            iconText: "􀆺"
                             mainTextStr: "Focus"
-                            isOn: false
+
+                            iconBaseName: "focus"
+                            state: 0
                         }
                     }
                 }
