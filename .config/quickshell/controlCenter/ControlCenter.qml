@@ -1,21 +1,50 @@
 // ControlCenter.qml
 import Quickshell
+import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import ".."
 
-PanelWindow {
+PopupWindow {
     id: window
 
-    anchors {
-        top: true
-        right: true
+    // 1. Define the missing properties and signals
+    property var anchorWindow: null
+    property rect anchorRect: Qt.rect(0, 0, 0, 0)
+    signal closed
+
+    implicitWidth: 298
+    height: base.height + 20
+    color: "transparent"
+
+    HyprlandFocusGrab {
+        // Since this is inside a LazyLoader, 'true' is fine,
+        // or use window.visible to be safe.
+        active: window.visible
+
+        // This is the important part for Hyprland
+        windows: [window]
+
+        onCleared: {
+            window.closed();
+        }
     }
 
-    color: "transparent"
-    width: 298
-    height: base.height + 20  // bind to base
+    // IMPORTANT: In LazyLoader, visible should stay true
+    visible: true
+
+    // 2. Map the properties to the internal anchor object
+    anchor.window: anchorWindow
+    anchor.rect: anchorRect
+
+    anchor.edges: Edges.Bottom
+    anchor.gravity: Edges.Bottom
+
+    // 3. Add the 10px spacing
+    anchor.margins {
+        top: 30
+    }
 
     Rectangle {
         id: root

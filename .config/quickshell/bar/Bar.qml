@@ -5,13 +5,18 @@ import ".."
 import "modules"
 
 Scope {
-    signal toggleAppleMenu(var button, var window)   // <-- apple menu toggle signal
+    id: barScope
+
+    // EXPOSED PROPERTIES for shell.qml
+    property var activeWindow: null
+    property rect activeButtonRect: Qt.rect(0, 0, 0, 0)
 
     Variants {
         model: Quickshell.screens
 
         PanelWindow {
             id: barWindow
+
             required property var modelData
             screen: modelData
 
@@ -39,13 +44,6 @@ Scope {
                         id: appleButton
                         text: ""
                         fontSizeOverride: 22
-
-                        onClicked: buttonRect => {
-                            console.log("Bar.qml | ", "BarItem clicked! Rectangle id:", buttonRect.id, "text:", buttonRect.text, "### " + buttonRect, " ### Window: ", barWindow);
-
-                            // re-emit the Bar signal
-                            toggleAppleMenu(buttonRect, barWindow);
-                        }
                     }
 
                     BarItem {
@@ -79,7 +77,22 @@ Scope {
                         text: "􀴞"
                     }
                     BarItem {
+                        id: controlCenterButton
                         text: "􀜊"
+
+                        // Sync highlight global with the global toggle
+                        isActive: Global.controlCenterVisible && barScope.activeWindow === barWindow
+
+                        onClicked: {
+                            var coords = controlCenterButton.mapToItem(null, 0, 0);
+
+                            // 1. UPDATE DATA FIRST
+                            barScope.activeButtonRect = Qt.rect(coords.x, coords.y, width, height);
+                            barScope.activeWindow = barWindow;
+
+                            // 2. TRIGGER VISIBILITY SECOND
+                            Global.controlCenterVisible = !Global.controlCenterVisible;
+                        }
                     }
                     BarItem {
                         text: Time.time

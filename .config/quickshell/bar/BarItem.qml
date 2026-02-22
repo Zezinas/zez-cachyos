@@ -11,11 +11,13 @@ Rectangle {
     property int fontSizeOverride: 0  // 0 = use Theme default
     property int fontWeightOverride: 0  // 0 = use Theme default
 
+    property bool isActive: false
+
     height: Theme.barHeight
     radius: Theme.radius
-    color: mouseArea.pressed ? Theme.bgActive :
-           mouseArea.containsMouse ? Theme.bgHover :
-           "transparent"
+    color: (mouseArea.pressed || isActive) ? Theme.bgActive :
+               mouseArea.containsMouse ? Theme.bgHover :
+               "transparent"
 
     implicitWidth: label.implicitWidth + Theme.paddingH * 2
 
@@ -35,8 +37,15 @@ Rectangle {
         hoverEnabled: true
 
         onClicked: {
-            root.clicked(root)
-            console.log("BarItem.qml | ", "BarItem clicked! Rectangle id:", root.id, "text:", root.text, "### " + root)
+            // NEW: Calculate global coordinates relative to the Window
+            // mapToItem(null, ...) converts local 0,0 to window-relative coordinates
+            var coords = root.mapToItem(null, 0, 0);
+            var itemRect = Qt.rect(coords.x, coords.y, root.width, root.height);
+
+            // Send the item itself AND its calculated global rect
+            root.clicked(itemRect);
+
+            console.log("BarItem.qml | Position:", itemRect.x, itemRect.y);
         }
     }
 }

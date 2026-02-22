@@ -4,46 +4,23 @@ import "bar"
 import "appleMenu"
 import "controlCenter"
 
+// shell.qml
 Scope {
-    property var appleAnchorButton: null
-    property var appleBarWindow: null
-    property bool appleMenuOpen: false
-
     Bar {
-        id: bar
-
-        onToggleAppleMenu: (button, window) => {
-            console.log("shell.qml | ", "BarItem clicked! Rectangle id:", button.id, "text:", button.text, "### " + button);
-
-            console.log("shell.qml | ", "appleAnchorButton = ", appleAnchorButton, " | button = ", button, " | window = ", window);
-
-            // optional: still toggle variable for testing
-            if (appleAnchorButton === button) {
-                console.log("shell.qml | ", "IF TRUE ", "appleAnchorButton = ", appleAnchorButton, " | button = ", button, " | window = ", window);
-                appleMenuOpen = false;
-
-                appleAnchorButton = null;
-                appleBarWindow = null;
-            } else {
-                console.log("shell.qml | ", "IF FALSE ", "appleAnchorButton = ", appleAnchorButton, " | button = ", button, " | window = ", window);
-                appleAnchorButton = button;
-                appleBarWindow = window;
-                appleMenuOpen = true;
-            }
-            console.log("");
-            console.log("");
-        }
+        id: mainBar
     }
 
-    // AppleMenu {
-    //     id: appleMenuInstance
+    LazyLoader {
+        id: controlCenterLoader
+        active: Global.controlCenterVisible // Only loads when true
 
-    //     open: appleMenuOpen
-    //     anchorButton: appleAnchorButton
-    //     anchorWindow: appleBarWindow
-    // }
+        ControlCenter {
+            // Pass the anchor data to the loaded component
+            anchorWindow: mainBar.activeWindow
+            anchorRect: mainBar.activeButtonRect
 
-    ControlCenter {}
-
-    AppleMenu2 {}
+            // Handle the "click outside" logic via a signal or global
+            onClosed: Global.controlCenterVisible = false
+        }
+    }
 }
