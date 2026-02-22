@@ -50,23 +50,19 @@ PanelWindow {
                     anchors.margins: 10
                     anchors.fill: parent
 
+                    NetworkLogic {
+                        id: networkLogic
+                    }
+
                     MiniItem {
                         mainTextStr: "Wi-Fi"
-                        optionalTextStr: "TP-Link_81A4"
-
                         iconBaseName: "wifi"
-                        state: 4
+                        optionalTextStr: networkLogic.wifiSSID
+                        state: networkLogic.wifiState // Directly uses 0, 1, 2, 3, or 4
 
-                        onIconClicked: {
-                            console.log("Wi-Fi icon clicked | state:", state)
-                            toggleWifi()
-                        }
-
-                        onItemClicked: {
-                            console.log("Wi-Fi item clicked")
-                            openWifiMenu()
-                        }
+                        onIconClicked: networkLogic.toggleWifi()
                     }
+
                     MiniItem {
                         mainTextStr: "Bluetooth"
                         optionalTextStr: "On"
@@ -75,14 +71,14 @@ PanelWindow {
                         state: 1
 
                         onIconClicked: {
-                                console.log("Bluetooth icon clicked | state:", state)
-                                toggleBt()
-                            }
+                            console.log("Bluetooth icon clicked | state:", state);
+                            toggleBt();
+                        }
 
-                            onItemClicked: {
-                                console.log("Bluetooth item clicked")
-                                openBtMenu()
-                            }
+                        onItemClicked: {
+                            console.log("Bluetooth item clicked");
+                            openBtMenu();
+                        }
                     }
                     MiniItem {
                         mainTextStr: "AirDrop"
@@ -173,9 +169,9 @@ PanelWindow {
 
             value: soundLogic.volume
 
-            onValueUpdated: function(v) {
+            onValueUpdated: function (v) {
                 console.log("Volume updated to: " + v);
-                soundLogic.updateVolume(v)
+                soundLogic.updateVolume(v);
             }
         }
 
