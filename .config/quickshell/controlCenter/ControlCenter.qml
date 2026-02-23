@@ -5,6 +5,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import ".."
+import "../components"
+import "../scripts" as Scripts
 
 PopupWindow {
     id: window
@@ -12,10 +14,9 @@ PopupWindow {
     // 1. Define the missing properties and signals
     property var anchorWindow: null
     property rect anchorRect: Qt.rect(0, 0, 0, 0)
-    signal closed
 
     implicitWidth: 298
-    height: base.height + 20
+    implicitHeight: base.implicitHeight + 20
     color: "transparent"
 
     HyprlandFocusGrab {
@@ -71,25 +72,31 @@ PopupWindow {
                 radius: 10
                 color: Theme.bgFig02
 
-                height: 134
-                Layout.preferredWidth: height
+                implicitHeight: 134
+                Layout.preferredWidth: implicitHeight
 
                 ColumnLayout {
                     spacing: 0
                     anchors.margins: 10
                     anchors.fill: parent
 
-                    WifiLogic {
-                        id: wifiLogic
-                    }
+                    // WifiLogic {
+                    //     id: wifiLogic
+                    // }
 
                     MiniItem {
                         mainTextStr: "Wi-Fi"
                         iconBaseName: "wifi"
-                        optionalTextStr: wifiLogic.wifiSSID
-                        state: wifiLogic.wifiState // Directly uses 0, 1, 2, 3, or 4
+                        optionalTextStr: "SSID"
+                        state: 4 // Directly uses 0, 1, 2, 3, or 4
 
-                        onIconClicked: wifiLogic.toggleWifi()
+                        onIconClicked: {
+                            console.log("Bluetooth icon clicked | state:", state);
+                        }
+
+                        onItemClicked: {
+                            console.log("Bluetooth item clicked");
+                        }
                     }
 
                     MiniItem {
@@ -101,12 +108,10 @@ PopupWindow {
 
                         onIconClicked: {
                             console.log("Bluetooth icon clicked | state:", state);
-                            toggleBt();
                         }
 
                         onItemClicked: {
                             console.log("Bluetooth item clicked");
-                            openBtMenu();
                         }
                     }
                     MiniItem {
@@ -169,8 +174,8 @@ PopupWindow {
             }
         }
 
-        DdcLogic {
-            id: ddcLogic
+        Scripts.DisplayLogic {
+            id: displayLogic
         }
 
         SliderItem {
@@ -179,14 +184,15 @@ PopupWindow {
             mainTextStr: "Display"
             iconText: "􀆮" //
 
-            value: ddcLogic.brightness
+            value: displayLogic.brightness
 
             onValueUpdated: function (v) {
-                ddcLogic.updateBrightness(v);
+                console.log("Display Brightness updated to: " + v);
+                displayLogic.updateBrightness(v)
             }
         }
 
-        SoundLogic {
+        Scripts.SoundLogic {
             id: soundLogic
         }
 
@@ -199,7 +205,7 @@ PopupWindow {
             value: soundLogic.volume
 
             onValueUpdated: function (v) {
-                console.log("Volume updated to: " + v);
+                console.log("Sound Volume updated to: " + v);
                 soundLogic.updateVolume(v);
             }
         }
@@ -209,7 +215,7 @@ PopupWindow {
             radius: 10
             color: Theme.bgFig02
 
-            height: 63
+            implicitHeight: 63
             Layout.fillWidth: true
         }
     }

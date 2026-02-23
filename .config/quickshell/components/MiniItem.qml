@@ -25,8 +25,8 @@ Rectangle {
     property color iconFgColor: state <= 0 ? Theme.textPrimary : "white"
 
     property string iconSource: {
-        if (iconBaseName === "") return "icons/default.svg"
-        return "icons/" + iconBaseName + state + ".svg"
+        if (iconBaseName === "") return "../assets/default.svg"
+        return "../assets/" + iconBaseName + state + ".svg"
     }
 
 

@@ -1,26 +1,37 @@
 // shell.qml
 import Quickshell
 import "bar"
-import "appleMenu"
 import "controlCenter"
 
-// shell.qml
 Scope {
     Bar {
         id: mainBar
     }
 
     LazyLoader {
-        id: controlCenterLoader
-        active: Global.controlCenterVisible // Only loads when true
-
+        active: Global.activeMenu === "controlCenter"
         ControlCenter {
-            // Pass the anchor data to the loaded component
-            anchorWindow: mainBar.activeWindow
-            anchorRect: mainBar.activeButtonRect
-
-            // Handle the "click outside" logic via a signal or global
-            onClosed: Global.controlCenterVisible = false
+            anchorWindow: Global.anchorWindow
+            anchorRect: Global.anchorRect
+            onClosed: Global.activeMenu = ""
         }
     }
+
+    // LazyLoader {
+    //     active: Global.activeMenu === "wifi"
+    //     WifiMenu {
+    //         anchorWindow: Global.anchorWindow
+    //         anchorRect: Global.anchorRect
+    //         onClosed: Global.activeMenu = ""
+    //     }
+    // }
+
+    // LazyLoader {
+    //     active: Global.activeMenu === "bluetooth"
+    //     BluetoothMenu {
+    //         anchorWindow: Global.anchorWindow
+    //         anchorRect: Global.anchorRect
+    //         onClosed: Global.activeMenu = ""
+    //     }
+    // }
 }

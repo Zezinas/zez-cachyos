@@ -5,7 +5,7 @@ import QtQuick
 
 QtObject {
     id: logic
-    property real brightness: 0.5 // Default fallback
+    property real brightness: 0.5 // default fallback 0.00-1.00
 
     // Timer for debounced updates
     property Timer debounce: Timer {
@@ -20,6 +20,7 @@ QtObject {
     function updateBrightness(v) {
         debounce.pendingValue = v;
         debounce.restart();
+        brightness = v; // Optional: keep UI instantly in sync
     }
 
     // Process to fetch current brightness on startup

@@ -1,15 +1,12 @@
 // Bar.qml
 import Quickshell
 import QtQuick
-import ".."
 import "modules"
+import ".."
+import "../components"
 
 Scope {
     id: barScope
-
-    // EXPOSED PROPERTIES for shell.qml
-    property var activeWindow: null
-    property rect activeButtonRect: Qt.rect(0, 0, 0, 0)
 
     Variants {
         model: Quickshell.screens
@@ -26,7 +23,7 @@ Scope {
                 right: true
             }
 
-            implicitHeight: Theme.barHeight
+            implicitHeight: 24 * Theme.uiScale
             color: "transparent"
 
             Rectangle {
@@ -37,8 +34,8 @@ Scope {
                 Row {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: Theme.spacing
-                    anchors.leftMargin: Theme.edgeMargin
+                    spacing: -10 * Theme.uiScale
+                    anchors.leftMargin: 5 * Theme.uiScale
 
                     BarItem {
                         id: appleButton
@@ -70,28 +67,18 @@ Scope {
                 Row {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: Theme.spacing
-                    anchors.rightMargin: Theme.edgeMargin
+                    spacing: -10 * Theme.uiScale
+                    anchors.rightMargin: 5 * Theme.uiScale
 
                     BarItem {
                         text: "􀴞"
                     }
                     BarItem {
-                        id: controlCenterButton
+                        itemId: "controlCenter"
                         text: "􀜊"
 
-                        // Sync highlight global with the global toggle
-                        isActive: Global.controlCenterVisible && barScope.activeWindow === barWindow
-
-                        onClicked: {
-                            var coords = controlCenterButton.mapToItem(null, 0, 0);
-
-                            // 1. UPDATE DATA FIRST
-                            barScope.activeButtonRect = Qt.rect(coords.x, coords.y, width, height);
-                            barScope.activeWindow = barWindow;
-
-                            // 2. TRIGGER VISIBILITY SECOND
-                            Global.controlCenterVisible = !Global.controlCenterVisible;
+                        onClicked: (buttonId, buttonRect) => {
+                            Global.handleBarClick(buttonId, buttonRect, barWindow)
                         }
                     }
                     BarItem {
