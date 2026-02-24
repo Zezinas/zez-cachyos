@@ -12,6 +12,7 @@ Rectangle {
     property alias text: label.text
     property int fontSizeOverride: 0  // 0 = use Theme default
     property int fontWeightOverride: 0  // 0 = use Theme default
+    property color fontColorOverride: Theme.textPrimary
     property bool isActive: false
 
     radius: 6 * Theme.uiScale
@@ -30,7 +31,7 @@ Rectangle {
         font.family: Theme.fontFamily
         font.pixelSize: fontSizeOverride > 0 ? fontSizeOverride : Theme.fontSize
         font.weight: fontWeightOverride > 0 ? fontWeightOverride : Theme.fontWeight
-        color: Theme.textPrimary
+        color: fontColorOverride
     }
 
     MouseArea {
