@@ -7,7 +7,7 @@ import QtQuick
 
 Singleton {
     // --- DEBUGGING ---
-    property bool debug: true
+    property bool debug: false
 
     // --- RAW STATE ---
     property bool wifiEnabled

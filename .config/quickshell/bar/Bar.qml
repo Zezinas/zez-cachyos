@@ -71,6 +71,57 @@ Scope {
                     spacing: -10 * Theme.uiScale
                     anchors.rightMargin: 5 * Theme.uiScale
 
+                    StackItem {
+                        itemId: "tempreture_sensors"
+
+                        text1: Scripts.HardwareMonitorLogic.temperatureSensors[0] + "°" // CPU
+                        text2: Scripts.HardwareMonitorLogic.temperatureSensors[1] + "°" // GPU
+                    }
+
+                    GraphItem {
+                        itemId: "cpu_util"
+                        labelText: "CPU"
+                        coreData: Scripts.HardwareMonitorLogic.cpuLoadPerCore
+                        barColor: Theme.textPrimary
+                        bgColor: "transparent"
+                        barWidth: 5
+                        borderColor: Theme.textPrimary
+                        borderWidth: 1
+                    }
+
+                    GraphItem {
+                        itemId: "ram_util"
+                        labelText: "RAM"
+                        coreData: [Scripts.HardwareMonitorLogic.ramUsagePercent]
+                        barColor: Theme.textPrimary
+                        bgColor: "transparent"
+                        barWidth: 15
+                        borderColor: Theme.textPrimary
+                        borderWidth: 1
+                    }
+
+                    GraphItem {
+                        itemId: "gpu_util"
+                        labelText: "GPU"
+                        coreData: [Scripts.HardwareMonitorLogic.gpuLoadPercent]
+                        barColor: Theme.textPrimary
+                        bgColor: "transparent"
+                        barWidth: 15
+                        borderColor: Theme.textPrimary
+                        borderWidth: 1
+                    }
+
+                    GraphItem {
+                        itemId: "vram_util"
+                        labelText: "VRAM"
+                        coreData: [Scripts.HardwareMonitorLogic.vramUsagePercent]
+                        barColor: Theme.textPrimary
+                        bgColor: "transparent"
+                        barWidth: 15
+                        borderColor: Theme.textPrimary
+                        borderWidth: 1
+                    }
+
                     BarItem {
                         // text: "􀴞"
                         itemId: "network"

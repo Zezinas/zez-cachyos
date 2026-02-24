@@ -17,6 +17,10 @@ Scope {
         }
     }
 
+    // UiTest {
+    //     id: uiTest
+    // }
+
     // LazyLoader {
     //     active: Global.activeMenu === "wifi"
     //     WifiMenu {
