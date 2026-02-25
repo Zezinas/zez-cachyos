@@ -142,6 +142,10 @@ Scope {
                         // "wifi-idle" fontColorOverride: Theme.plusDarker
                         // "none" fontColorOverride: Theme.plusDarker
                         fontColorOverride: (Scripts.NetworkLogic.primaryConnection === "wifi-idle" || Scripts.NetworkLogic.primaryConnection === "none") ? Theme.textSecondary : Theme.textPrimary
+
+                        onClicked: (buttonId, buttonRect) => {
+                            Global.handleBarClick(buttonId, buttonRect, barWindow);
+                        }
                     }
                     BarItem {
                         itemId: "controlCenter"

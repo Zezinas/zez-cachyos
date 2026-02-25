@@ -21,14 +21,14 @@ Scope {
     //     id: uiTest
     // }
 
-    // LazyLoader {
-    //     active: Global.activeMenu === "wifi"
-    //     WifiMenu {
-    //         anchorWindow: Global.anchorWindow
-    //         anchorRect: Global.anchorRect
-    //         onClosed: Global.activeMenu = ""
-    //     }
-    // }
+    LazyLoader {
+        active: Global.activeMenu === "network"
+        WifiControl {
+            anchorWindow: Global.anchorWindow
+            anchorRect: Global.anchorRect
+            onClosed: Global.activeMenu = ""
+        }
+    }
 
     // LazyLoader {
     //     active: Global.activeMenu === "bluetooth"
