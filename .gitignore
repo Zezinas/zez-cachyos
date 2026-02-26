@@ -1,5 +1,11 @@
 /zez-scripts/SF-Pro/
 /zez-scripts/fonts/SF-Pro/
+
+/zez-scripts/extras/
+/zez-scripts/extras.tar.gz
+/extras/
+
+
 /.config/waybar/icons/
 
 /.config/quickshell/controlCenter/icons
