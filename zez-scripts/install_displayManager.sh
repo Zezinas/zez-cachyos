@@ -1,54 +1,83 @@
 #!/usr/bin/env bash
+
 set -e
 
-echo "==> Installing greetd, cage, and nwg-hello..."
-# nwg-hello is now in the official Arch Extra repos, but we'll use yay as a fallback.
-sudo pacman -S --noconfirm --needed greetd cage nwg-hello
+echo "==== Installing greetd + cage + nwg-hello on CachyOS (Hyprland) ===="
 
-CONFIG_FILE="/etc/greetd/config.toml"
+# ---- Must be root ----
+if [[ $EUID -ne 0 ]]; then
+  echo "Please run as root"
+  exit 1
+fi
 
-echo "==> Writing greetd configuration..."
-sudo tee "$CONFIG_FILE" > /dev/null << EOF
+# ---- Install packages ----
+echo "Installing required packages..."
+pacman -S --needed --noconfirm \
+  greetd \
+  cage \
+  nwg-hello
+
+# ---- Create greetd config ----
+echo "Configuring greetd..."
+
+mkdir -p /etc/greetd
+
+cat > /etc/greetd/config.toml <<EOF
 [terminal]
 vt = 1
 
 [default_session]
-# cage starts nwg-hello in kiosk mode (-s for VT switching support)
 command = "cage -s -- nwg-hello"
 user = "greeter"
 EOF
 
-echo "==> Configuring nwg-hello (Standalone)..."
-sudo mkdir -p /etc/nwg-hello
-# Copy default config if it doesn't exist, then overwrite with our custom uwsm session
-[ ! -f /etc/nwg-hello/nwg-hello.json ] && sudo cp /etc/nwg-hello/nwg-hello-default.json /etc/nwg-hello/nwg-hello.json || true
+# ---- Create greeter user if missing ----
+if ! id greeter &>/dev/null; then
+  echo "Creating greeter user..."
+  useradd -m -G video,audio,input greeter
+fi
 
-sudo tee /etc/nwg-hello/nwg-hello.json > /dev/null << EOF
-{
-  "custom_sessions": [
-    {
-      "name": "Hyprland (UWSM)",
-      "exec": "uwsm start hyprland-uwsm.desktop"
-    }
-  ],
-  "monitor_nums": [],
-  "form_on_monitors": [],
-  "delay_secs": 1,
-  "show_clock": true,
-  "show_power_buttons": true,
-  "gtk-theme": "Adwaita-dark",
-  "gtk-icon-theme": "Adwaita",
-  "gtk-cursor-theme": "Adwaita"
-}
+# ---- Create nwg-hello config ----
+echo "Configuring nwg-hello..."
+
+mkdir -p /etc/nwg-hello
+
+cat > /etc/nwg-hello/config <<EOF
+[greeter]
+layer-shell = true
+
+[background]
+path = "/usr/share/backgrounds/cachyos-wallpaper.jpg"
+fit = "cover"
+
+[appearance]
+gtk-theme = "Adwaita-dark"
+icon-theme = "Papirus-Dark"
+font = "Sans 11"
+
+[commands]
+reboot = "systemctl reboot"
+poweroff = "systemctl poweroff"
 EOF
 
-echo "==> Setting permissions for the greeter user..."
-# Essential for GPU access and input handling in cage
-sudo usermod -aG video,input greeter
+# ---- Ensure Hyprland session file exists ----
+echo "Ensuring Hyprland session entry..."
 
-echo "==> Enabling greetd..."
-sudo systemctl enable greetd
+mkdir -p /usr/share/wayland-sessions
+
+cat > /usr/share/wayland-sessions/hyprland.desktop <<EOF
+[Desktop Entry]
+Name=Hyprland
+Comment=Hyprland Wayland Compositor
+Exec=Hyprland
+Type=Application
+EOF
+
+# ---- Enable greetd ----
+echo "Enabling greetd service..."
+systemctl enable greetd.service
 
 echo
-echo "✅ Setup complete!"
-echo "Reboot to start your zero-persistence GUI login experience."
+echo "==== Installation Complete ===="
+echo "Reboot your system to test greetd."
+echo
