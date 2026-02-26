@@ -20,6 +20,16 @@ OFFICIAL_CORE=(
     nano                       # Terminal text editor
     openssh                    # SSH client/server
     samba                      # SMB/CIFS file sharing
+
+    uwsm                       # Universal Wayland Sesion Manager
+    libnewt                    # Terminal text editor (uwsm dependency)
+
+        # --- Login & Session Management ---
+        # uwsm                       # Session manager
+        # libnewt                    # UI dependency for uwsm
+        # greetd                     # Display manager daemon
+        # qtgreet                    # The Qt-based GUI
+        # cage                       # Kiosk compositor to run qtgreet
 )
 
 # Core utilities / applications
