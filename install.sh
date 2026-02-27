@@ -8,6 +8,7 @@ SCRIPTS=(
     "setup_ssh.sh"
     "setup_brightness.sh"
     "setup_config.sh"
+    "install_greetd.sh"
 )
 
 echo "=== Zez-CachyOS Installer (Direct) ==="
