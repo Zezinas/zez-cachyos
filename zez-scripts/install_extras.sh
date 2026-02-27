@@ -40,7 +40,7 @@ fi
 # Copy assets
 if [[ -d "$TEMP_DIR/extras/assets" ]]; then
     mkdir -p "$HOME/.config/quickshell"
-    cp -a "$TEMP_DIR/extras/assets/." "$HOME/.config/quickshell/"
+    cp -a "$TEMP_DIR/extras/assets/" "$HOME/.config/quickshell/"
 fi
 
 echo "✅ Extras installed"
