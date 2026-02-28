@@ -12,7 +12,6 @@ sudo pacman -Syu --noconfirm yay
 # Core Hyprland + Wayland essentials
 OFFICIAL_CORE=(
     hyprland                   # Wayland compositor
-    waybar                     # Status bar for Wayland
     wl-clipboard               # Clipboard integration for Wayland
     xorg-xwayland              # XWayland support for running X apps
     xdg-desktop-portal-hyprland # Flatpak & screen sharing integration
