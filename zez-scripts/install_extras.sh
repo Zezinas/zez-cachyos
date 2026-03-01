@@ -44,3 +44,9 @@ if [[ -d "$TEMP_DIR/extras/assets" ]]; then
 fi
 
 echo "✅ Extras installed"
+
+
+# tar -czf extras.tar.gz extras/
+# gpg -c extras.tar.gz
+# Password
+# extras.tar.gz.gpg
