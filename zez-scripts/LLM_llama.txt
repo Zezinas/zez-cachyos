@@ -1,0 +1,55 @@
+# llama.cpp (vulkan RADV)
+
+# vulkaninfo --summary
+# vulkaninfo | less
+# radeontop
+
+yay -S llama.cpp-vulkan
+
+llama-server -m model.gguf --host 0.0.0.0 --port 8080 -ngl 99
+
+
+
+
+llama-cli -m model.gguf \
+  -ngl 99 \
+  -fa \
+  -c 8192 \
+  --mlock \
+  -p "You are a helpful AI assistant." \
+  -cnv
+
+llama-server -m model.gguf \
+  --host 0.0.0.0 --port 8080 \
+  -ngl 99 \
+  -fa \
+  -c 16384 \
+  -b 512 \
+  --mlock \
+  --mmap
+
+llama-cli -m model.gguf -cnv 
+llama-server -m model.gguf --host 0.0.0.0 --port 8080
+
+llama-cli -m model.gguf -cnv -ngl 99 -fa -c 16384 -b 512 --mlock --mmap
+llama-server -m model.gguf --host 0.0.0.0 --port 8080 -ngl 99 -fa -c 16384 -b 512 --mlock --mmap
+
+
+# -ngl 99 	GPU Offload. Sends 99 layers to GPU.        Ensures 100% of the model runs on your 16GB VRAM.
+#
+# -fa         Flash Attention.                            Crucial. Speeds up RDNA 4 and saves VRAM on long chats.
+#
+# -c 16384    Context Size. 	                            16k is a "sweet spot" for 16GB cards. 8k is faster, 32k might squeeze VRAM.
+#
+# -b 512 	    Batch Size.                                 Lower (512) feels more "snappy" for chatting; higher (2048) is for summarizing long docs.
+#
+# --mlock     Memory Lock.                                Prevents Linux from moving the model to "Swap" (slow SSD/HDD).
+#
+# --mmap      Memory Mapping. 	                        Allows the model to load almost instantly from disk.
+
+# -cnv        ChatGPT Style Chat
+
+# -ngl 99 -fa -c 16384 -b 512 --mlock --mmap
+# 512 1024 2048 4096 8192 16384 32768
+#
+# --host 0.0.0.0 --port 8080
