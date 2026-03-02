@@ -40,15 +40,9 @@ systemctl status fprintd --no-pager
 echo
 echo "=== Fingerprint Enrollment ==="
 echo "You will now be asked to scan your finger for enrollment."
-
-echo "Troubleshooting: USER = $USER"
-REAL_USER=$(whoami)
-echo "Troubleshooting: REAL_USER = $REAL_USER"
-
 echo
 read -p "Press Enter to begin..."
 sudo fprintd-enroll -f left-index-finger $USER
-
 echo
 echo "=== Enrollment complete! ==="
 echo
