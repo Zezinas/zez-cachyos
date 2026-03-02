@@ -31,6 +31,9 @@ gpg --output "$TEMP_DIR/extras.tar.gz" \
 echo "Extracting..."
 tar -xzf "$TEMP_DIR/extras.tar.gz" -C "$TEMP_DIR"
 
+echo "Clearing macOS metadata... (GARBAGE)"
+find "$TEMP_DIR" -name "._*" -delete
+
 # Install fonts
 if [[ -f "$TEMP_DIR/extras/fonts/install_font.sh" ]]; then
     chmod +x "$TEMP_DIR/extras/fonts/install_font.sh"
