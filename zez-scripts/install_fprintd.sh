@@ -42,7 +42,8 @@ echo "=== Fingerprint Enrollment ==="
 echo "You will now be asked to scan your finger for enrollment."
 echo
 read -p "Press Enter to begin..."
-sudo fprintd-enroll -f left-index-finger $USER
+REAL_USER=$(SUDO_USER:-$(whoami))
+sudo fprintd-enroll -f left-index-finger $REAL_USER
 
 echo
 echo "=== Enrollment complete! ==="
