@@ -42,7 +42,7 @@ echo "=== Fingerprint Enrollment ==="
 echo "You will now be asked to scan your finger for enrollment."
 echo
 read -p "Press Enter to begin..."
-fprintd-enroll -f left-index-finger
+sudo fprintd-enroll -f left-index-finger
 
 echo
 echo "=== Enrollment complete! ==="
