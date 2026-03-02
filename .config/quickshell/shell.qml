@@ -23,7 +23,7 @@ Scope {
 
     LazyLoader {
         active: Global.activeMenu === "network"
-        WifiControl {
+        BluetoothControl {
             anchorWindow: Global.anchorWindow
             anchorRect: Global.anchorRect
             onClosed: Global.activeMenu = ""
