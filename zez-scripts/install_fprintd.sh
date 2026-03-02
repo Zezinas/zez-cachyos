@@ -24,6 +24,7 @@ sudo pacman -S --needed --noconfirm fprintd opencv
 # 3. Install patched libfprint from AUR
 echo
 echo "--- Installing libfprint-cs9711-git (patched driver) from AUR..."
+sudo pacman -Rdd libfprint --noconfirm || true
 yay -S --noconfirm libfprint-cs9711-git
 
 # 4. Restart fprintd service
@@ -46,13 +47,20 @@ fprintd-enroll -f left-index-finger
 echo
 echo "=== Enrollment complete! ==="
 echo
-echo "IMPORTANT: You still need to modify PAM configs so fingerprint can be used for sudo, login, etc."
-echo "Open the relevant files (e.g.,sudo nano /etc/pam.d/sudo) and insert the line:"
-echo
-echo "auth sufficient pam_fprintd.so"
-echo
-echo "Be careful: incorrect PAM can prevent logins."
-echo "If this is a fresh install, make a backup of the original files first."
+echo "--- Configuring PAM for sudo..."
+
+# 1. Create backup
+sudo cp /etc/pam.d/sudo /etc/pam.d/sudo.bak
+
+# 2. Check for existing configuration to avoid duplicates
+if ! grep -q "pam_fprintd.so" /etc/pam.d/sudo; then
+    # Use 'sed' to insert the line after the first line (usually #%PAM-1.0)
+    sudo sed -i '1a auth      sufficient    pam_fprintd.so' /etc/pam.d/sudo
+    echo "Successfully added: auth sufficient pam_fprintd.so to /etc/pam.d/sudo"
+else
+    echo "Fingerprint configuration already exists in /etc/pam.d/sudo."
+fi
+
 echo
 echo "DONE!"
 
