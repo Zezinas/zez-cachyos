@@ -1,0 +1,69 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "default_model": {
+      "provider": "llama.cpp",
+      "model": "unsloth_gpt-oss-20b-GGUF_gpt-oss-20b-Q8_0",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+
+  "language_models": {
+    "openai_compatible": {
+      "llama.cpp": {
+        "api_url": "http://192.168.0.213:8080",
+        "available_models": [
+          {
+            "name": "unsloth_gpt-oss-20b-GGUF_gpt-oss-20b-Q8_0",
+            "display_name": "GPT-OSS (20B)",
+            "max_tokens": 16384,
+            "capabilities": {
+              "chat_completions": true,
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+          {
+            "name": "unsloth_Qwen3.5-9B-GGUF_Qwen3.5-9B-Q6_K",
+            "display_name": "Qwen 3.5 (9B)",
+            "max_tokens": 32768,
+            "capabilities": {
+              "chat_completions": true,
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false,
+            },
+          },
+        ],
+      },
+    },
+  },
+  "disable_ai": false,
+  "auto_update": false,
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": false,
+  },
+  "git_panel": {
+    "tree_view": false,
+  },
+  "confirm_quit": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+}

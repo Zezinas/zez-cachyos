@@ -1,0 +1,43 @@
+# Steam launch options
+ENABLE_LAYER_MESA_ANTI_LAG=1 SDL_VIDEO_DRIVER=wayland %command% -vulkan +exec autoexec.cfg
+
+# AMD Anti-Lag2 -> ENABLE_LAYER_MESA_ANTI_LAG=1
+sudo pacman -S vulkan-mesa-layers lib32-vulkan-mesa-layers
+
+# Hyprland Wayland resolution scaling fix -> hyprland plugin: csgo-vulkan-fix
+#
+# load all the plugins you installed
+exec-once = hyprctl plugin load "$HYPR_PLUGIN_DIR/lib/libhyprexpo.so"
+#
+# add plugin configuration to hyprland config file ~/.config/hypr/hyprland.conf
+plugin {
+    # ENABLE_LAYER_MESA_ANTI_LAG=1 SDL_VIDEO_DRIVER=wayland %command% -vulkan +exec autoexec.cfg
+    csgo-vulkan-fix {
+        # Whether to fix the mouse position. A select few apps might be wonky with this.
+        fix_mouse = false
+
+        # Add apps with vkfix-app = initialClass, width, height
+        vkfix-app = SDL Application, 1920, 1440
+    }
+}
+
+
+### plugin install
+
+# cmake, cpio, pkg-config, git, g++, gcc
+
+# hyprpm update --no-shallow
+# hyprpm add https://github.com/hyprwm/hyprland-plugins
+# hyprpm list
+# hyprpm enable csgo-vulkan-fix
+
+
+
+
+
+### --- --- --- --- --- ---
+# CS2 / CS:GO
+# GTA V Enhanced (+mods)
+# Assetto Corsa (+mods)
+
+# hyprland plugin hyprpm -> CSGO Vulkan fix

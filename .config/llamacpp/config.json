@@ -1,0 +1,50 @@
+{
+  "n_models_slots": 1,
+  "models": [
+    {
+      "name": "gpt-oss-20b",
+      "hf_repo": "unsloth/gpt-oss-20b-GGUF",
+      "hf_file": "gpt-oss-20b-Q8_0.gguf",
+      "n_gpu_layers": -1,
+      "flash_attn": true,
+      "ctx_size": 16384,
+      "batch_size": 512,
+      "use_mlock": true,
+      "use_mmap": true
+    },
+    {
+      "name": "qwen-3.5-9b",
+      "hf_repo": "unsloth/Qwen3.5-9B-GGUF",
+      "hf_file": "Qwen3.5-9B-Q6_K.gguf",
+      "n_gpu_layers": -1,
+      "flash_attn": true,
+      "ctx_size": 32768,
+      "batch_size": 512,
+      "use_mlock": true,
+      "use_mmap": true
+    }
+  ]
+}
+
+/*
+
+llama-cli --config ~/.config/llamacpp/config.json -cnv
+llama-server --config ~/.config/llamacpp/config.json --host 0.0.0.0 --port 8080
+
+http://192.168.0.213:8080
+curl http://192.168.0.213:8080/v1/models
+
+sudo ufw allow 8080/tcp
+sudo ufw reload
+sudo ufw delete allow 8080/tcp
+
+
+--models-dir ~/.cache/llama.cpp
+llama-server --host 0.0.0.0 --port 8080 --models-dir ~/.cache/llama.cpp
+llama-server --host 0.0.0.0 --port 8080 --models-dir ~/.cache/llama.cpp -ngl -1 -fa on -b 512 --mlock --mmap
+
+-ngl -1 -fa on -c 16384 -b 512 --mlock --mmap
+
+-ngl -1 -fa on -b 512 --mlock --mmap
+
+ */

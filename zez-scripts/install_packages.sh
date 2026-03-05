@@ -36,7 +36,6 @@ OFFICIAL_UTILS=(
     alacritty                  # GPU-accelerated terminal emulator
     nemo                       # Graphical file manager
     zed                        # Modern code editor
-    discord                    # Chat / communication app
 )
 
 # Optional extras
@@ -48,6 +47,14 @@ OPTIONAL_OFFICIAL=(
     hyprcursor                 # Cursor theme/management
 )
 
+# Core gaming
+OFFICIAL_GAMES=(
+    steam                    # Steam client
+    discord                  # Chat / communication app
+    cachyos-gaming-meta      # Gaming meta package
+    # gamescope mangohud lib32-mangohud
+)
+
 # Install official repo packages
 echo "Installing core packages from official repos..."
 sudo pacman -S --noconfirm --needed "${OFFICIAL_CORE[@]}"
@@ -57,6 +64,9 @@ sudo pacman -S --noconfirm --needed "${OPTIONAL_OFFICIAL[@]}"
 
 echo "Installing core utilities from official repos..."
 sudo pacman -S --noconfirm --needed "${OFFICIAL_UTILS[@]}"
+
+echo "Installing core gaming packages from official repos..."
+sudo pacman -S --noconfirm --needed "${OFFICIAL_GAMES[@]}"
 
 # --- AUR PACKAGES ---
 # Optional / AUR apps
