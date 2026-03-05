@@ -1,0 +1,31 @@
+
+# Steam Launch Options
+OpenRPF (dsound.dll)
+ScriptHookV (dinput8.dll)
+Scripts (xinput1_4.dll)
+
+WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
+
+# CORE mods
+- CodeWalker
+- OpenRPF                           # Open IV / OpenRPF / CodeWalker
+- Script Hook V
+- Community Script Hook V .NET
+
+- Gameconfig.xml
+- Heap Adjuster
+- Packfile Limit Adjuster
+- Resource Adjuster
+- Savegame file
+
+# BASE mods
+- Rampage Trainer / Menyoo 2.0 # Trainer Menu
+
+
+
+
+
+
+
+### Snapper configuration
+### snapshots
