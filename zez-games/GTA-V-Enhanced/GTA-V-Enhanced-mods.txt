@@ -12,6 +12,7 @@ WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
 - CodeWalker
 - OpenRPF
 - Script Hook V
+- Script Hook V .NET Enhanced
 
 - Gameconfig.xml
 - Savegame file
@@ -25,7 +26,6 @@ WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
 
 # Legacy stuff
 # Open IV / OpenRPF / CodeWalker
-- Community Script Hook V .NET
 - Packfile Limit Adjuster
 - Resource Adjuster
 - Heap Adjuster
