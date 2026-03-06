@@ -6,19 +6,16 @@ Scripts (xinput1_4.dll)
 
 WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
 
+# Savegame path /mnt/Games/SteamLibrary/steamapps/compatdata/3240220/pfx/drive_c/users/steamuser/Documents/Rockstar Games/GTAV Enhanced/Profiles/73D9687A
+
 # CORE mods
 - CodeWalker
 - OpenRPF                           # Open IV / OpenRPF / CodeWalker
 - Script Hook V
-- Community Script Hook V .NET
+
 
 - Gameconfig.xml
-- Heap Adjuster
-- Packfile Limit Adjuster
-- Resource Adjuster
 - Savegame file
-
-# BASE mods
 - Rampage Trainer / Menyoo 2.0 # Trainer Menu
 
 
@@ -27,5 +24,8 @@ WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
 
 
 
-### Snapper configuration
-### snapshots
+# Legacy stuff
+- Community Script Hook V .NET
+- Packfile Limit Adjuster
+- Resource Adjuster
+- Heap Adjuster
