@@ -1,0 +1,13 @@
+sudo snapper -c steam-games create-config /mnt/Games
+
+sudo snapper -c steam-games set-config "TIMELINE_CREATE=no"
+
+sudo snapper -c steam-games create --description "Base installation of CS2, Aimbeast, GTA V Enhanced, Forza Horizon 4, Assetto Corsa"
+
+sudo snapper -c steam-games list
+
+# Replace [ID] with your snapshot number (e.g., 5)
+sudo snapper -c steam-games undochange [ID]..0
+
+# This only reverts files inside the Assetto Corsa folder
+sudo snapper -c steam-games undochange [ID]..0 /mnt/Games/steamapps/common/assettocorsa
