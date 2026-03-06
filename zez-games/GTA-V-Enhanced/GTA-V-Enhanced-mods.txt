@@ -4,7 +4,7 @@ OpenRPF (dsound.dll)
 ScriptHookV (dinput8.dll)
 Scripts (xinput1_4.dll)
 
-WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
+WINEDLLOVERRIDES="dinput8=n,b;ScriptHookV=n,b;xinput1_4=n,b" %command% -nobattleye
 
 # Savegame path /mnt/Games/SteamLibrary/steamapps/compatdata/3240220/pfx/drive_c/users/steamuser/Documents/Rockstar Games/GTAV Enhanced/Profiles/73D9687A
 
