@@ -24,6 +24,57 @@ WINEDLLOVERIDES="dsound, dinput8, xinput1_4=n,b" %command% --no-battle-eye
 
 
 
+
+
+
+# installation
+# windows dependancies
+sudo pacman -S protontricks
+protontricks 3240220 d3dcompiler_47 vcrun2020
+# dotnet48 errors solution
+protontricks 3240220 win7
+protontricks 3240220 remove_mono
+protontricks 3240220 dotnet48
+protontricks 3240220 win10
+# protontricks -l
+# protontricks 3240220 list-installed
+
+# CodeWalker
+- (optional) /steamapps/common/CodeWalker/CodeWalker.exe
+- add to steam -> CodeWalker.exe
+- steam preferences -> configure proton
+- steam launch options -> STEAM_COMPAT_DATA_PATH="/mnt/Games/SteamLibrary/steamapps/compatdata/3240220" %command% explorer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Legacy stuff
 # Open IV / OpenRPF / CodeWalker
 - Packfile Limit Adjuster
